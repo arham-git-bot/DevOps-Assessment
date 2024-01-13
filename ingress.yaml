@@ -1,16 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: your-node-app-ingress-new
+  name: your-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: node-app-new.local   # Change the host to a unique value
+  - host: your-app.local
     http:
       paths:
-      - path: /new-path         # Change the path to a unique value
-        pathType: Prefix
+      - pathType: Prefix
+        path: /
         backend:
           service:
-            name: your-node-app-deployment
+            name: your-app-service
             port:
-              number: 8080
+              number: 80
