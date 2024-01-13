@@ -13,7 +13,14 @@ spec:
         app: your-app
     spec:
       containers:
+<<<<<<< HEAD
       - name: your-app
         image: arham1005/devops-assessment
         ports:
         - containerPort: 3000
+=======
+        - name: your-app
+          image: arham1005/devops-assessment:main-0d548d99d32f49395f017361e43c71e879ed444f
+          ports:
+            - containerPort: 3000
+>>>>>>> 20c976b8800ba63d4fcd5c2eee760de77b72d716
