@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: node-app-container
-          image: arham1005/devops-assessment:main-218528d65b19e59bcb94b43cee6eaf468fb5d01f
+          image: arham1005/devops-assessment:main-6bf5ef5f39a1dd93d7ab5d1bf5189e1c779e1854
           ports:
             - containerPort: 3000
