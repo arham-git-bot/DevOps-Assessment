@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: your-node-app-ingress-new
+spec:
+  rules:
+  - host: node-app-new.local   # Change the host to a unique value
+    http:
+      paths:
+      - path: /new-path         # Change the path to a unique value
+        pathType: Prefix
+        backend:
+          service:
+            name: your-node-app-deployment
+            port:
+              number: 8080
