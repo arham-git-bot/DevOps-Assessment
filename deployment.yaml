@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: your-app-container
-          image: arham1005/devops-assessment:main-6eb8d6264b887a5f2c06b410c10ba38c278eb14f
+          image: arham1005/devops-assessment:main-a4af44ef3e3f01e00418c1768b64853dc33cd3e8
           ports:
             - containerPort: 8080
