@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: your-app-container
-          image: darshanwohlig/devops-assessment:main-f8b5aca5ea4931f6abe9234884a5d44f8f7c852a
+          image: darshanwohlig/devops-assessment:main-c1a57777ef25427e4d3ac7c49e55f1c17f14933f
           ports:
             - containerPort: 8080
