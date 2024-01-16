@@ -16,12 +16,7 @@ spec:
         app: mynode-app
     spec:
       containers:
-<<<<<<< HEAD
-        - name: mynode-app
-          image: arham100/5mynode-app
-=======
         - name: your-app-container
           image: arham1005/devops-assessment:main-e689bd71b18ba4adda1e5cf6fe1a222b2a1210a2
->>>>>>> 7e29df56faf0113ba8451adee607ea9e5567aaf1
           ports:
             - containerPort: 8080
