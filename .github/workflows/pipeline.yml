@@ -44,5 +44,16 @@ jobs:
           git add .
           git commit -m "new"
           git push
-       
+     - name: Update Kubernetes Deployment
+       run: |
+         kubectl set image deployment/your-app-deployment your-app-container=${{ secrets.DOCKER_USERNAME }}/devops-assessment:$IMAGE_TAG
+
+    - name: Notify Success
+      if: success()
+      run: echo "Deployment successful. Docker image: ${{ secrets.DOCKER_USERNAME }}/devops-assessment:$IMAGE_TAG"
+
+    - name: Notify Failure
+      if: failure()
+      run: echo "Deployment failed. Docker image: ${{ secrets.DOCKER_USERNAME }}/devops-assessment:$IMAGE_TAG"
+
       
