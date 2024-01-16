@@ -1,19 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: your-app-deployment
+  name: mynode-app
+  namespace: nodejs
+  labels:
+    app: nodeapp
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: your-app
+      app: mynode-app
   template:
     metadata:
       labels:
-        app: your-app
+        app: mynode-app
     spec:
       containers:
-        - name: your-app-container
-          image: arham1005/devops-assessment
+        - name: mynode-app
+          image: arham100/5mynode-app
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
