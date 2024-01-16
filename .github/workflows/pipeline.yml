@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Set env
-        run: echo "GITHUB_BRANCH=$(echo $GITHUB_REF_NAME-$GITHUB_SHA)" >> $GITHUB_ENV  
+        run: echo "GITHUB_BRANCH=$(echo $GITHUB_REF_NAME-$GITHUB_SHA)" >> $GITHUB_ENV
 
       - name: Checkout code
         uses: actions/checkout@v3
@@ -37,23 +37,21 @@ jobs:
       - name: Update manifest file
         run: |
           yq e '.spec.template.spec.containers[0].image = "darshanwohlig/devops-assessment:${{ env.GITHUB_BRANCH }}"' -i deployment.yaml
- 
 
           git config --global user.email "arham.sangoi@wohlig.com"
           git config --global user.name "arham-git-bot"
           git add .
           git commit -m "new"
           git push
-     - name: Update Kubernetes Deployment
-       run: |
-         kubectl set image deployment/mynode-app your-app-container=${{ secrets.DOCKER_USERNAME }}/devops-assessment:$IMAGE_TAG
 
-    - name: Notify Success
-      if: success()
-      run: echo "Deployment successful. Docker image: ${{ secrets.DOCKER_USERNAME }}/devops-assessment:$IMAGE_TAG"
+      - name: Update Kubernetes Deployment
+        run: |
+          kubectl set image deployment/mynode-app your-app-container=${{ secrets.DOCKER_USERNAME }}/devops-assessment:$IMAGE_TAG
 
-    - name: Notify Failure
-      if: failure()
-      run: echo "Deployment failed. Docker image: ${{ secrets.DOCKER_USERNAME }}/devops-assessment:$IMAGE_TAG"
+      - name: Notify Success
+        if: success()
+        run: echo "Deployment successful. Docker image: ${{ secrets.DOCKER_USERNAME }}/devops-assessment:$IMAGE_TAG"
 
-      
+      - name: Notify Failure
+        if: failure()
+        run: echo "Deployment failed. Docker image: ${{ secrets.DOCKER_USERNAME }}/devops-assessment:$IMAGE_TAG"
